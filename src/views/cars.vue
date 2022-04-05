@@ -1,5 +1,5 @@
 <template>
-  <div class="home" >
+  <div class="home">
     <a class="btn btn-primary" @click="goToAddCarPage()"
       ><span style="color: white">Add Car</span></a
     >
@@ -10,12 +10,15 @@
         style="width: 40rem"
         v-for="car in carlist"
         :key="car.id"
-        
       >
-        <div id = "carprice" class="card-body" @click="setSelectedcar(car.price)">
-        <div id = "del" class="card-center" @click="gotToDeletePage(car.name)">
-        
-          <h5 class="card-title" id = "cname">{{ car.name }}</h5>
+        <div id="carprice" class="card-body" @click="setSelectedcar(car.price)">
+          <div
+            id="del"
+            class="card-center"
+            @click="gotToDeletePage(car.name)"
+          ></div>
+
+          <h5 class="card-title" id="cname">{{ car.name }}</h5>
           <b-img
             :src="car.image"
             width="500px"
@@ -26,16 +29,15 @@
           </b-img>
           <p class="card-text">Year: {{ car.year }}</p>
           <p class="card-text">origin: {{ car.origin }}</p>
-          <a class="btn btn-primary" @click="goToEditPage()" 
+          <a class="btn btn-primary" @click="goToEditPage()"
             ><span style="color: white">Edit</span></a
           >
-          <a class="btn btn-primary" @click="goToDeletePage(car.name)" 
+          <a class="btn btn-primary" @click="goToDeletePage(car.name)"
             ><span style="color: white">Delete</span></a
           >
-          <a class="btn btn-primary" @click="goToDetailsPage(car.id)" 
+          <a class="btn btn-primary" @click="goToDetailsPage(car.id)"
             ><span style="color: white">Info</span></a
           >
-        </div>
         </div>
       </div>
     </div>
@@ -74,7 +76,7 @@ export default {
   },
   methods: {
     setSelectedcar: function (name) {
-      this.selectedcar = name;
+      alert((this.selectedcar = name));
     },
     goToDetailsPage: function (id) {
       this.$router.push("/cardetails/" + id);
@@ -82,9 +84,9 @@ export default {
     goToAddCarPage: function () {
       this.$router.push("/addcar/");
     },
-    goToDeletePage() {
-      var x = document.cname.value;
-      alert("Deleted"+x);
+    goToDeletePage(name) {
+      //var x = document.cname.value;
+      alert((this.selectedcar = name));
     },
   },
 };

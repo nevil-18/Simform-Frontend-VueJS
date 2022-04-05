@@ -1,7 +1,7 @@
 <template>
   <div class="col-md-3 centeralign">
-    <b-alert show> {{ selectedcar }} </b-alert>
-    <b-alert show> {{ goToDeletePage }} </b-alert>
+    <div> {{ selectedcar }} </div>
+    <div> {{ goToDeletePage }} </div>
   </div>
 </template>
 
