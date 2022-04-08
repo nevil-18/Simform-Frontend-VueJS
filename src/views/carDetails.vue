@@ -9,7 +9,6 @@
           width="600px"
           height="380px"
           class="rounded"
-          :alt="Pic"
         >
         </b-img>
         <p class="card-text">Year : {{ carDetails.year }}</p>

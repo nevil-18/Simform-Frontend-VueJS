@@ -1,7 +1,5 @@
 <template>
   <div class="col-md-3 centeralign">
-    <div> {{ selectedcar }} </div>
-    <div> {{ goToDeletePage }} </div>
   </div>
 </template>
 
