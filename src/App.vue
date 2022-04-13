@@ -18,8 +18,8 @@
           </b-nav-form>
 
           <b-nav-item-dropdown text="User" right>
-            <b-dropdown-item href="#">Profile</b-dropdown-item>
-            <b-dropdown-item href="#">Sign Out</b-dropdown-item>
+            <b-dropdown-item href="#">Register</b-dropdown-item>
+            <b-dropdown-item href="#">Login</b-dropdown-item>
           </b-nav-item-dropdown>
         </b-navbar-nav>
       </b-collapse>
