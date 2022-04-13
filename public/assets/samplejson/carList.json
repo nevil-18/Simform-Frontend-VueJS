@@ -29,21 +29,30 @@
     },
     {
       "name": "Nexon ",
-      "year": "2020",
+      "year": "2017",
       "image": "assets/imgs/nexon.png",
       "price": "7.4L",
-      "type": "SubCompact Crossover SUV",
+      "type": "Subcompact Crossover SUV",
       "origin": "India",
       "id": 4
     },
     {
       "name": "Tiago",
-      "year": "2016 ",
+      "year": "2016",
       "image": "assets/imgs/tiago.jpg",
       "price": "5.22",
-      "type": "A-Segment Hatchback",
+      "type": "A Segment Hatchback",
       "origin": "India",
       "id": 5
+    },
+    {
+      "name": "Nexon EV",
+      "year": "2020",
+      "image": "assets/imgs/nexon-ev.png",
+      "price": "14.54",
+      "type": "Subcompact Crossover SUV",
+      "origin": "India",
+      "id": 6
     }
   ]
 }

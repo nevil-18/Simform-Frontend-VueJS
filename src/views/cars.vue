@@ -84,6 +84,7 @@ export default {
     },
     goToEditPage: function (id){
       this.$router.push("/edit/" + id);
+      
     },
   },
 };
@@ -94,7 +95,6 @@ export default {
   margin-top: 10px;
   margin-bottom: 10px;
 }
-
 .vue-logo-back {
   background-color: black;
 }
