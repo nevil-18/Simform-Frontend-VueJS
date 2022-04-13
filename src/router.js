@@ -4,8 +4,6 @@ import cars from "./views/cars.vue";
 import carDetails from "./views/carDetails.vue";
 import addCar from "./views/addCar.vue";
 import editCar from "./views/editCar.vue";
-import login from "./views/login.vue";
-import register from "./views/register.vue";
 
 Vue.use(Router);
 
@@ -34,14 +32,6 @@ const router = new Router({
       path: "/edit/:id",
       name: "editcar",
       component: editCar,
-    },{
-      path: "/login/",
-      name: "login",
-      component: login,
-    },{
-      path: "/register/",
-      name: "register",
-      component: register,
     },
   ],
 });
