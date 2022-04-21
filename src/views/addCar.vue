@@ -4,7 +4,7 @@
       <div class="card centeralign addmargin" style="width: 20rem">
         <h2 class="card-title">Add Car</h2>
 
-        <b-form
+        <form
           @submit.prevent="submitForm"
           method="POST"
           class="card-body"
@@ -19,7 +19,7 @@
             pattern=".{9,20}"
             required
             title="09 to 20 Characters"
-          />
+          >
           &nbsp;
           <input
             type="text"
@@ -76,7 +76,7 @@
             class="btn btn-primary"
             ><span style="color: white">Submit</span></a
           >
-        </b-form>
+        </form>
         <br />
       </div>
     </div>
@@ -105,6 +105,14 @@ export default {
       },
     };
   },
+  computed: {
+    isNameStateValid() {
+      if (this.name) {
+        return this.isValid(this.name);
+      }
+      return null;
+    },
+  },
 
   components: {
     cardetails,
@@ -113,7 +121,6 @@ export default {
 
   methods: {
     submitForm() {
-
       var x = document.details.cname.value;
       var y = document.details.cyear.value;
       var z = document.details.ctype.value;
@@ -130,6 +137,9 @@ export default {
           a
       );
       axios.post("http://localhost:3000/carlist", this.form);
+    },
+    isValid() {
+      return this.name.length > 3 ? true : false; //your validation criteria goes here
     },
     goToMainPage: function () {
       this.$router.push("/cars");

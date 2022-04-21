@@ -12,8 +12,8 @@
               class="mr-sm-2"
               placeholder="Search"
             ></b-form-input>
-            <b-button size="sm" class="my-2 my-sm-0" type="submit"
-              >Search</b-button
+            <b-button size="sm" class="my-2 my-sm-0"  @click="goToMainPage()" type="submit"
+              >Home</b-button
             >
           </b-nav-form>
 
@@ -30,7 +30,15 @@
     <router-view />
   </div>
 </template>
-
+<script>
+export default {
+  methods: {
+    goToMainPage() {
+      this.$router.push("/cars");
+    }
+  },
+};
+</script>
 <style>
 #app {
   font-family: "Avenir", Helvetica, Arial, sans-serif;

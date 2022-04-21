@@ -1,9 +1,10 @@
 <template>
   <div class="home">
-    <br />
-    <a class="btn btn-primary" @click="goToAddCarPage()"
-      ><span style="color: white">Add Car</span></a
-    >
+    <div class="text-right">
+      <a class="btn btn-primary button" @click="goToAddCarPage()"
+        ><span style="color: white">Add Car</span></a
+      >
+    </div>
 
     <div class="col-md-6 centeralign">
       <div
@@ -23,7 +24,6 @@
               width="500px"
               height="350px"
               class="rounded"
-              
             >
             </b-img>
             <p class="card-text">Year: {{ car.year }}</p>
@@ -31,15 +31,19 @@
           </div>
           <a class="btn btn-primary" @click="goToEditPage(car.id)"
             ><span style="color: white">Edit</span></a
-          >
+          > 
           &nbsp;
           <a class="btn btn-primary" @click="goToDeletePage(car.name)"
             ><span style="color: white">Delete</span></a
-          > 
+          >
           &nbsp;
           <a class="btn btn-primary" @click="goToDetailsPage(car.id)"
             ><span style="color: white">Info</span></a
           >
+          &nbsp;  
+            <a class="btn btn-secondary no-click" id="soon"
+              ><span style="color: white">Available Soon</span></a
+            >
         </div>
       </div>
     </div>
@@ -52,13 +56,13 @@ import galleryCard from "../components/galleryCard.vue";
 import axios from "axios";
 
 export default {
-  name: "cars", 
+  name: "cars",
   props: {
     carData: {
       type: Object,
       required: true,
       default: () => {}
-    }
+    },
   },
   mounted() {
     axios({
@@ -70,14 +74,14 @@ export default {
       },
       (error) => {
         // eslint-disable-next-line
-        console.error(error); 
+        console.error(error);
       }
     );
   },
   data() {
     return {
       selectedcar: "",
-    }   
+    };
   },
   components: {
     galleryCard,
@@ -110,5 +114,9 @@ export default {
 
 .vue-logo-back {
   background-color: black;
+}
+
+.no-click {
+  pointer-events: none;
 }
 </style>

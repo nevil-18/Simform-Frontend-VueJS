@@ -20,7 +20,7 @@
     },
     {
       "id": 3,
-      "name": "XUV 700",
+      "name": "Mahindra XUV 700",
       "price": "18L",
       "year": 2021,
       "type": "Compact Crossover SUV",
@@ -38,12 +38,21 @@
     },
     {
       "name": "Nexon EVS",
-      "year": "2020",
+      "year": "AvailableSoon",
       "image": "assets/imgs/nexon-ev.png",
       "price": "14.54L",
       "type": "Sub-Compact Crossover SUV",
       "origin": "India",
       "id": 5
+    },
+    {
+      "name": "AltroxEV",
+      "year": "AvailableSoon",
+      "image": "assets/imgs/altroz-ev.jpg",
+      "price": "14L",
+      "type": "Premium Hatchback",
+      "origin": "India",
+      "id": 6
     }
   ]
 }
