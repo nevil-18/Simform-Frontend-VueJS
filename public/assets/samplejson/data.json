@@ -7,7 +7,7 @@
       "year": 2020,
       "type": "Premium Hatchback",
       "image": "assets/imgs/altroz.png",
-      "origin": "India"
+      "origin": "Originated in India, Engine: upto 1497cc, Transmission: Auto Manual, Seating Capacity: 5, Mileage: 18/23 km/l combined"
     },
     {
       "id": 2,
@@ -26,33 +26,6 @@
       "type": "Compact Crossover SUV",
       "image": "assets/imgs/mahindraXUV700.jpg",
       "origin": "India"
-    },
-    {
-      "id": 4,
-      "name": "Nexon",
-      "year": "2017",
-      "image": "assets/imgs/nexon.png",
-      "price": "10L",
-      "type": "Sub-Compact Crossover SUV",
-      "origin": "India"
-    },
-    {
-      "name": "Nexon EVS",
-      "year": "AvailableSoon",
-      "image": "assets/imgs/nexon-ev.png",
-      "price": "14.54L",
-      "type": "Sub-Compact Crossover SUV",
-      "origin": "India",
-      "id": 5
-    },
-    {
-      "name": "AltroxEV",
-      "year": "AvailableSoon",
-      "image": "assets/imgs/altroz-ev.jpg",
-      "price": "14L",
-      "type": "Premium Hatchback",
-      "origin": "India",
-      "id": 6
     }
   ]
 }
