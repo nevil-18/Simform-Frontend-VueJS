@@ -1,72 +1,85 @@
 <template>
-  <div class="home">
+  <div class="col-md-6 centeralign">
     <div class="col-md-6 centeralign">
       <div class="card centeralign addmargin" style="width: 20rem">
         <h2 class="card-title">Add Car</h2>
-
+        <div class="summary text-danger" v-if="v$.form.$error">
+          Form has errors
+        </div>
         <form
           @submit.prevent="submitForm"
           method="POST"
           class="card-body"
-          name="details"
+          name="addCar"
         >
-          <input
-            id="cname"
-            type="text"
-            v-model="form.name"
-            class="form-control"
-            placeholder="Enter Car-Name"
-            pattern=".{9,20}"
-            required
-            title="09 to 20 Characters"
-          >
+          <div>
+            <input
+              id="cname"
+              type="text"
+              v-model="form.name"
+              class="form-control"
+              placeholder="Enter Car-Name"
+              title="09 to 20 Characters"
+            />
+            <div v-if="v$.form.name.$error">Name field has an error.</div>
+          </div>
           &nbsp;
+          <div>
           <input
             type="text"
             id="cyear"
             v-model="form.year"
             class="form-control"
-            rows="5"
             placeholder="Introduced in YYYY "
-            required
+            title="Introduced in Year"
           />
+          <div v-if="v$.form.year.$error">Name field has an error.</div>
+          </div>
           <br />
+          <div>
           <input
             id="cimg"
             type="url"
             v-model="form.image"
-            pattern="/(http(s?):)([/|.|\w|\s|-])*\.(?:jpg|gif|png)/"
             class="form-control"
             placeholder="www.abc.com..."
-            required
-          />
+            title="Car-Image"
+          /><div v-if="v$.form.image.$error">Name field has an error.</div>
+          </div>
           <br />
+          <div>
           <input
             id="cprice"
             type="text"
             v-model="form.price"
             class="form-control"
             placeholder="Price"
-            required
-          />
+            title="Car Price in INR Lakhs"
+          /><div v-if="v$.form.price.$error">Name field has an error.</div>
+          </div>
           <br />
+          <div>
           <input
             id="ctype"
             type="text"
             v-model="form.type"
             class="form-control"
             placeholder="Car-Type"
-            required
-          />
+            title="Car-Type"
+          /><div v-if="v$.form.type.$error">Name field has an error.</div>
+          </div>
           <br />
-          <input
+          <div>
+          <textarea
             id="corigin"
-            type="text"
             v-model="form.origin"
             class="form-control"
-            placeholder="Origin"
-            required
-          />
+            rows="5"
+            cols="5"
+            placeholder="Car-Information"
+            title="Car-Information"
+          ></textarea><div v-if="v$.form.origin.$error">Name field has an error.</div>
+          </div>
           <br />
           <a
             @click="
@@ -74,8 +87,11 @@
               goToMainPage();
             "
             class="btn btn-primary"
-            ><span style="color: white">Submit</span></a
+            id="btn"
+            disabled="disabled"
           >
+            <span style="color: white">Submit</span>
+          </a>
         </form>
         <br />
       </div>
@@ -84,14 +100,21 @@
 </template>
 
 <script>
-import cardetails from "./carDetails.vue";
 import cars from "./cars.vue";
 import axios from "axios";
+import useVuelidate from "@vuelidate/core";
+import { required, maxLength, integer } from "@vuelidate/validators";
 
 export default {
-  name: "addcar",
+  name: "addcar", 
 
   mounted() {},
+
+  setup() {
+    return {
+      v$: useVuelidate(),
+    };
+  },
 
   data() {
     return {
@@ -105,26 +128,31 @@ export default {
       },
     };
   },
-  computed: {
-    isNameStateValid() {
-      if (this.name) {
-        return this.isValid(this.name);
-      }
-      return null;
+
+  validations: {
+    form: {
+      name: { required, max: maxLength(9,20) },
+      year: { required, integer },
+      image: { required, URL },
+      price: { required, integer },
+      type: { required, Text },
+      origin: { required, max: maxLength(0,130) },
     },
   },
-
   components: {
-    cardetails,
     cars,
   },
 
   methods: {
     submitForm() {
-      var x = document.details.cname.value;
-      var y = document.details.cyear.value;
-      var z = document.details.ctype.value;
-      var a = document.details.corigin.value;
+      const isFormCorrect = this.v$.$validate();
+      alert("Form has Errors!");
+
+      if (!isFormCorrect) return;
+      var x = document.addCar.cname.value;
+      var y = document.addCar.cyear.value;
+      var z = document.addCar.ctype.value;
+      var a = document.addCar.corigin.value;
       alert(
         "Created Data - " +
           " Car-Name:" +
@@ -137,9 +165,6 @@ export default {
           a
       );
       axios.post("http://localhost:3000/carlist", this.form);
-    },
-    isValid() {
-      return this.name.length > 3 ? true : false; //your validation criteria goes here
     },
     goToMainPage: function () {
       this.$router.push("/cars");

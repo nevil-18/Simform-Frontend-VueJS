@@ -11,6 +11,13 @@ export default {
   name: "galleryCard",
   props: {
     selectedcar: String,
+    carData: Object
+  },
+
+  data() {
+      return {
+          
+        }
   },
   components: {
     cars,

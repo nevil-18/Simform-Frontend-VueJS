@@ -27,11 +27,11 @@
             >
             </b-img>
             <p class="card-text">Year: {{ car.year }}</p>
-            <p class="card-text">origin: {{ car.origin }}</p>
+            <p class="card-text">Origin: {{ car.origin }}</p>
           </div>
           <a class="btn btn-primary" @click="goToEditPage(car.id)"
             ><span style="color: white">Edit</span></a
-          > 
+          >
           &nbsp;
           <a class="btn btn-primary" @click="goToDeletePage(car.name)"
             ><span style="color: white">Delete</span></a
@@ -40,10 +40,14 @@
           <a class="btn btn-primary" @click="goToDetailsPage(car.id)"
             ><span style="color: white">Info</span></a
           >
-          &nbsp;  
-            <a class="btn btn-secondary no-click" id="soon"
+          &nbsp;
+          <!-- <div v-if="(year = `AvailableSoon`)">
+            <a
+              class="btn btn-secondary no-click"
+              id="soon"
               ><span style="color: white">Available Soon</span></a
             >
+          </div> -->
         </div>
       </div>
     </div>
@@ -58,11 +62,7 @@ import axios from "axios";
 export default {
   name: "cars",
   props: {
-    carData: {
-      type: Object,
-      required: true,
-      default: () => {}
-    },
+    carData: Object,
   },
   mounted() {
     axios({
@@ -88,8 +88,11 @@ export default {
   },
   methods: {
     setSelectedcar: function (price) {
-      alert((this.selectedcar = price));
+      this.$emit((this.selectedcar = price));
+      alert(this.selectedcar);
     },
+    // availableSoon: function () {
+    // },
     goToDetailsPage: function (id) {
       this.$router.push("/cardetails/" + id);
     },
@@ -97,7 +100,8 @@ export default {
       this.$router.push("/addcar/");
     },
     goToDeletePage: function (name) {
-      alert((this.selectedcar = name + " Deleted"));
+      this.$emit((this.selectedcar = name + " Deleted"));
+      alert(this.selectedcar);
     },
     goToEditPage: function (id) {
       this.$router.push("/edit/" + id);

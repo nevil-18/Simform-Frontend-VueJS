@@ -1,5 +1,6 @@
 <template>
-  <div class="home">
+  <div class="card centeralign addmargin"
+        style="width: 40rem">
     <div class="card" v-if="carData.id">
       <div class="card-header">Car Details</div>
       <div class="card-body">
@@ -14,18 +15,18 @@
         <p class="card-text">Year : {{ carData.year }}</p>
         <p class="card-text">Price : {{ carData.price }}</p>
         <p class="card-text">Type : {{ carData.type }}</p>
-        <p class="card-text">Origin : {{ carData.origin }}</p>
+        <div>
+        <p class="card-text">Origin : {{ carData.origin }}</p> </div>
         <a @click="goToMainPage()" class="btn btn-primary"
           ><span style="color: white">Home</span></a
         >
-        <galleryCard />
       </div>
-    </div>
+    </div>  
   </div>
 </template>
 
 <script>
-import galleryCard from "../components/galleryCard.vue";
+import galleryCard from "../components/galleryCard.vue"
 import axios from "axios";
 
 export default {
@@ -41,7 +42,7 @@ export default {
     axios({
       method: "GET",
       url: "http://localhost:3000/carlist/" + this.$route.params.id,
-    }).then(
+    }).then(    
       (response) => {
         this.carData = response.data;
       },

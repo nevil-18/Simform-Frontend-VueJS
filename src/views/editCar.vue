@@ -16,7 +16,9 @@
               v-model="form.name"
               class="form-control"
               placeholder="Enter Car-Name"
+              pattern=".{9,20}"
               required
+              title="09 to 20 Characters"
             />
             &nbsp;
             <input
@@ -27,6 +29,7 @@
               rows="5"
               placeholder="Introduced in YYYY "
               required
+              title="Introduced in Year"
             />
             <br />
             <input
@@ -37,6 +40,7 @@
               v-model="form.image"
               placeholder="www.abc.com..."
               required
+              title="Car-Image"
             />
             <br />
             <input
@@ -46,6 +50,7 @@
               v-model="form.price"
               placeholder="Price"
               required
+              title="Car Price in INR Lakhs"
             />
             <br />
             <input
@@ -53,23 +58,27 @@
               type="text"
               class="form-control"
               v-model="form.type"
-              placeholder="Car-Type"
+              placeholder="SUV, HATCHBACK, SEADEN"
               required
+              title="Car-Type"
             />
             <br />
-            <input
+            <textarea
               id="corigin"
-              type="text"
+              row="5"
+              cols="5"
+              minlength="30"
+              maxlength="120"
               class="form-control"
               v-model="form.origin"
               placeholder="Origin"
               required
-            />
+            > </textarea>
             <br />
             <a
               @click="
-                submitForm();
-                goToMainPage();
+                submitForm()
+                goToMainPage()
               "
               class="btn btn-primary"
               ><span style="color: white">Submit</span></a
