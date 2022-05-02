@@ -4,6 +4,7 @@ import cars from "./views/cars.vue";
 import carDetails from "./views/carDetails.vue";
 import addCar from "./views/addCar.vue";
 import editCar from "./views/editCar.vue";
+import addTest from "./views/addTest.vue";
 
 Vue.use(Router);
 
@@ -32,6 +33,11 @@ const router = new Router({
       path: "/edit/:id",
       name: "edit",
       component: editCar,
+    },
+    {
+      path: "/addtest/",
+      name: "addtest",
+      component: addTest,
     },
   ],
 });
