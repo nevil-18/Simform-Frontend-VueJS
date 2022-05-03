@@ -2,13 +2,13 @@
 
 ## What is the use of this Repo [![Generic badge](https://img.shields.io/badge/What-VueJS-blue.svg)](https://vuejs.org/v2/guide/)
 
-This Repo demonstrates the use of the following in vuejs
+The Repo Covers the following topics of Vue.js:
 1. Vue Routing
 2. Components
 3. Communication between Components ( Parent to child component )
 4. Axios Library to make HTTP calls
 
-## Application Live URL [![Generic badge](https://img.shields.io/badge/Deployed-Success-green.svg)](https://aditya-sridhar.github.io/simple-vuejs-app/)
+## Application Live URL [![Generic badge](https://img.shields.io/badge/Deployed-Success-green.svg)](https://github.com/nevil-18/Simform-Frontend-VueJS/)
 
 ## Prerequisites
 
@@ -23,29 +23,6 @@ Install Vue Cli Node Package Globally using the following Command.
 ```bash
 npm install -g @vue/cli
 ```
-## Cloning and Running the Application
-
-Clone the application to local
-
-Go into the project Folder and install the npm packages using the following command
-```bash
-npm install
-```
-Run the following command to run the application
-```
-npm run serve
-```
-The Application runs on **localhost:8080**
-
-## Application Design
-
-### Views and components
-
-**Car** : This View Displays a list of cars and gets the data from a json from assets folder
-
-**CarDetails** : This View Displays the Details of a single car and gets the data from a json from assets Folder
-
-**GalleryCard** : Display component displays the name of the selected car in **Caars** View. **GalleryCard** is a child component of **Cars** View
 
 ### Http Library [![Generic badge](https://img.shields.io/badge/http-axios-blue.svg)](https://www.npmjs.com/package/axios)
 
@@ -53,11 +30,15 @@ The Application runs on **localhost:8080**
 
 ### Routing
 
-The Application has 2 endpoints
+The Application has 5 endpoints
 
-**/car** : The ties to *Cars* View
+**/car** : The ties to *cars* View
 
-**/cardetails** : This ties to *CarDetails* View
+**/cardetails** : This ties to *carDetails* View
+
+**/edit** : This ties to *editCar* View
+
+**/addcar** : This ties to *addCar* View
 
 ## References
 

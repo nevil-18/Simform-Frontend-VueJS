@@ -1,0 +1,31 @@
+{
+  "carlist": [
+    {
+      "id": 1,
+      "name": "Altroz",
+      "price": "6.7L",
+      "year": 2020,
+      "type": "Premium Hatchback",
+      "image": "assets/imgs/altroz.png",
+      "origin": "Made in India, Engine: upto 1497cc, Transmission: Auto Manual, Seating Capacity: 5, Mileage: 18/23 km/l combined"
+    },
+    {
+      "id": 2,
+      "name": "Punch",
+      "price": "5.4L",
+      "year": 2021,
+      "type": "Sub-Compact SUV",
+      "image": "assets/imgs/punch.png",
+      "origin": "India"
+    },
+    {
+      "name": "Mahindra XUV 700",
+      "year": "2021",
+      "image": "assets/imgs/mahindraXUV700.jpg",
+      "price": "18L",
+      "type": "Compact Crossover SUV",
+      "origin": "India",
+      "id": 3
+    }
+  ]
+}

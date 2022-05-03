@@ -1,7 +1,5 @@
 <template>
   <div class="col-md-3 centeralign">
-    <div> {{ selectedcar }} </div>
-    <div> {{ goToDeletePage }} </div>
   </div>
 </template>
 
@@ -10,6 +8,7 @@ export default {
   name: "galleryCard",
   props: {
     selectedcar: String,
+    carData: Object
   },
 };
 </script>

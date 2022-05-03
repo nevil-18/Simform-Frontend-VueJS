@@ -8,14 +8,17 @@
           @submit.prevent="submitForm"
           method="POST"
           class="card-body"
-          name="details"
+          name="addCar"
         >
           <input
             id="cname"
             type="text"
             v-model="form.name"
-            class="form-control"
             placeholder="Enter Car-Name"
+            title="09 to 20 Characters"
+            minlength="09"
+            maxlength="20"
+            class="form-control"
             required
           />
           &nbsp;
@@ -23,9 +26,10 @@
             type="text"
             id="cyear"
             v-model="form.year"
-            class="form-control"
-            rows="5"
             placeholder="Introduced in YYYY "
+            title="Introduced in Year"
+            maxlength="4"
+            class="form-control"
             required
           />
           <br />
@@ -33,18 +37,21 @@
             id="cimg"
             type="url"
             v-model="form.image"
-            pattern="/(http(s?):)([/|.|\w|\s|-])*\.(?:jpg|gif|png)/"
-            class="form-control"
+            pattern="/([a-z\-_0-9\/\:\.]*\.(jpg|jpeg|png|gif))/i"
             placeholder="www.abc.com..."
+            title="Car-Image"
             required
+            class="form-control"
           />
           <br />
           <input
             id="cprice"
             type="text"
             v-model="form.price"
-            class="form-control"
             placeholder="Price"
+            title="Car Price in INR Lakhs"
+            maxlength="04"
+            class="form-control"
             required
           />
           <br />
@@ -52,19 +59,25 @@
             id="ctype"
             type="text"
             v-model="form.type"
-            class="form-control"
             placeholder="Car-Type"
+            title="Car-Type"
             required
+            class="form-control"
+            maxlength="25"
           />
           <br />
-          <input
+          <textarea
             id="corigin"
-            type="text"
             v-model="form.origin"
+            rows="5"
+            cols="21"
             class="form-control"
-            placeholder="Origin"
+            minlength="20"
+            maxlength="130"
+            placeholder="Car-Information"
+            title="Car-Information"
             required
-          />
+          ></textarea>
           <br />
           <a
             @click="
@@ -72,8 +85,10 @@
               goToMainPage();
             "
             class="btn btn-primary"
-            ><span style="color: white">Submit</span></a
+            id="btn"
           >
+            <span style="color: white">Submit</span>
+          </a>
         </form>
         <br />
       </div>
@@ -82,7 +97,6 @@
 </template>
 
 <script>
-import cardetails from "./carDetails.vue";
 import cars from "./cars.vue";
 import axios from "axios";
 
@@ -94,28 +108,38 @@ export default {
   data() {
     return {
       form: {
-        name: "",
-        year: "",
-        image: "",
-        price: "",
-        type: "",
-        origin: "",
+        name: null,
+        year: null,
+        image: null,
+        price: null,
+        type: null,
+        origin: null,
       },
     };
   },
 
   components: {
-    cardetails,
     cars,
   },
 
   methods: {
     submitForm() {
-      var x = document.details.cname.value;
-      var y = document.details.cyear.value;
-      var z = document.details.ctype.value;
-      var a = document.details.corigin.value;
-      alert("Car-Name:" + x + "Year:" + y + "Type:" + z + "Origin:" + a);
+
+      var x = document.addCar.cname.value;
+      var y = document.addCar.cyear.value;
+      var z = document.addCar.ctype.value;
+      var a = document.addCar.corigin.value;
+      alert(
+        "Created Data - " +
+          " Car-Name:" +
+          x +
+          " Year:" +
+          y +
+          " Type:" +
+          z +
+          " Origin:" +
+          a
+      );
       axios.post("http://localhost:3000/carlist", this.form);
     },
     goToMainPage: function () {
