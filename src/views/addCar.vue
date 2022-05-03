@@ -3,87 +3,80 @@
     <div class="col-md-6 centeralign">
       <div class="card centeralign addmargin" style="width: 20rem">
         <h2 class="card-title">Add Car</h2>
-        <div class="summary text-danger" v-if="v$.form.$error">
-          Form has errors
-        </div>
         <form
           @submit.prevent="submitForm"
           method="POST"
           class="card-body"
           name="addCar"
         >
-          <div>
-            <input
-              id="cname"
-              type="text"
-              v-model="form.name"
-              class="form-control"
-              placeholder="Enter Car-Name"
-              title="09 to 20 Characters"
-            />
-            <div v-if="v$.form.name.$error">Name field has an error.</div>
-          </div>
+          <input
+            id="cname"
+            type="text"
+            v-model="form.name"
+            placeholder="Enter Car-Name"
+            title="09 to 20 Characters"
+            minlength="09"
+            maxlength="20"
+            class="form-control"
+            required
+          />
           &nbsp;
-          <div>
-            <input
-              type="text"
-              id="cyear"
-              v-model="form.year"
-              class="form-control"
-              placeholder="Introduced in YYYY "
-              title="Introduced in Year"
-            />
-            <div v-if="v$.form.year.$error">Name field has an error.</div>
-          </div>
+          <input
+            type="text"
+            id="cyear"
+            v-model="form.year"
+            placeholder="Introduced in YYYY "
+            title="Introduced in Year"
+            maxlength="4"
+            class="form-control"
+            required
+          />
           <br />
-          <div>
-            <input
-              id="cimg"
-              type="url"
-              v-model="form.image"
-              class="form-control"
-              placeholder="www.abc.com..."
-              title="Car-Image"
-            />
-            <div v-if="v$.form.image.$error">Name field has an error.</div>
-          </div>
+          <input
+            id="cimg"
+            type="url"
+            v-model="form.image"
+            pattern="/([a-z\-_0-9\/\:\.]*\.(jpg|jpeg|png|gif))/i"
+            placeholder="www.abc.com..."
+            title="Car-Image"
+            required
+            class="form-control"
+          />
           <br />
-          <div>
-            <input
-              id="cprice"
-              type="text"
-              v-model="form.price"
-              class="form-control"
-              placeholder="Price"
-              title="Car Price in INR Lakhs"
-            />
-            <div v-if="v$.form.price.$error">Name field has an error.</div>
-          </div>
+          <input
+            id="cprice"
+            type="text"
+            v-model="form.price"
+            placeholder="Price"
+            title="Car Price in INR Lakhs"
+            maxlength="04"
+            class="form-control"
+            required
+          />
           <br />
-          <div>
-            <input
-              id="ctype"
-              type="text"
-              v-model="form.type"
-              class="form-control"
-              placeholder="Car-Type"
-              title="Car-Type"
-            />
-            <div v-if="v$.form.type.$error">Name field has an error.</div>
-          </div>
+          <input
+            id="ctype"
+            type="text"
+            v-model="form.type"
+            placeholder="Car-Type"
+            title="Car-Type"
+            required
+            class="form-control"
+            maxlength="20"
+          />
           <br />
-          <div>
-            <textarea
-              id="corigin"
-              v-model="form.origin"
-              class="form-control"
-              rows="5"
-              cols="5"
-              placeholder="Car-Information"
-              title="Car-Information"
-            ></textarea>
-            <div v-if="v$.form.origin.$error">Name field has an error.</div>
-          </div>
+          <textarea
+            id="corigin"
+            v-model="form.origin"
+            rows="5"
+            cols="21"
+            class="form-control"
+            minlength="20"
+            maxlength="130"
+            placeholder="Car-Information"
+            title="Car-Information"
+            required
+          ></textarea>
           <br />
           <a
             @click="
@@ -92,7 +85,6 @@
             "
             class="btn btn-primary"
             id="btn"
-            disabled="disabled"
           >
             <span style="color: white">Submit</span>
           </a>
@@ -106,30 +98,11 @@
 <script>
 import cars from "./cars.vue";
 import axios from "axios";
-import useVuelidate from "@vuelidate/core";
-import { required, maxLength, minLength, integer } from "@vuelidate/validators";
 
 export default {
   name: "addcar",
 
   mounted() {},
-
-  setup() {
-    return {
-      v$: useVuelidate(),
-    };
-  },
-
-  validations: {
-    form: {
-      name: { required, max: maxLength(9, 20) },
-      year: { required, integer },
-      image: { required, URL },
-      price: { required, integer },
-      type: { required, String },
-      origin: { required, min: minLength(30) ,max: maxLength(120) },
-    },
-  },
 
   data() {
     return {
@@ -150,10 +123,6 @@ export default {
 
   methods: {
     submitForm() {
-      const isFormCorrect = this.v$.$validate();
-     // alert("Form has Errors!");
-
-      if (!isFormCorrect) return;
       var x = document.addCar.cname.value;
       var y = document.addCar.cyear.value;
       var z = document.addCar.ctype.value;
