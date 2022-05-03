@@ -8,8 +8,8 @@
             @submit.prevent="submitForm"
             class="card-body"
             name="details"
-            method="PATCH"
-          >
+            method="PATCH" 
+          > 
             <input
               id="cname"
               type="text"
@@ -57,14 +57,16 @@
               required
             />
             <br />
-            <input
+            <textarea
               id="corigin"
               type="text"
               class="form-control"
               v-model="form.origin"
+              rows="3"
+              cols="5"
               placeholder="Origin"
-              required
-            />
+              required>
+            </textarea>
             <br />
             <a
               @click="
@@ -101,7 +103,11 @@ export default {
     };
   },
   mounted() {
-    
+    axios({
+      url: "http://localhost:3000/carlist/" + this.$route.params.id,
+    }).then((response) => {
+      this.form = response.data;
+    }); 
   },
   components: {
     cars,
@@ -113,17 +119,31 @@ export default {
       var q = document.details.cyear.value;
       var r = document.details.ctype.value;
       var s = document.details.corigin.value;
-      alert("Car-Name:" + p + "Year:" + q + "Type:" + r + "Origin:" + s);
-      axios.patch("http://localhost:3000/carlist/" + this.$route.params.id, this.form)
-      .then(
-      (response) => {
-        this.editCar = response.data; 
-      },
-      (error) => {
-        //eslint-disable-next-line no-console 
-        console.error(error);
-      }
-      ); 
+
+      alert(
+        "Edited Data - " +
+          "Car-Name: " +
+          p +
+          " Year: " +
+          q +
+          " Type: " +
+          r +
+          " Origin: " +
+          s
+      );
+
+      axios
+        .patch(
+          "http://localhost:3000/carlist/" + this.$route.params.id,
+          this.form
+        )
+        .then((response) => {
+          this.editCar = response.data;
+          alert("Car data Updated Successfully");
+        })  
+        .catch(() => {
+          alert("Oops! Somthing went wrong");
+        });
     },
     goToMainPage: function () {
       this.$router.push("/cars");

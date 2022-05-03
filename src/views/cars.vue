@@ -1,38 +1,42 @@
 <template>
-  <div class="home">
-      <br />
-    <a class="btn btn-primary" @click="goToAddCarPage()"
-      ><span style="color: white">Add Car</span></a
-    >
-
+  <div class="home"> 
+    <div class="text-right">
+      <a class="btn btn-primary button" @click="goToAddCarPage()"
+        ><span style="color: white">Add Car</span></a
+      >
+    </div>
     <div class="col-md-6 centeralign">
       <div
         class="card centeralign addmargin"
         style="width: 40rem"
         v-for="car in carlist"
         :key="car.id"
-      > <div class="card-body">
+      >
+        <div class="card-body">
           <h5 class="card-title" id="cname">{{ car.name }}</h5>
           <div id="carprice" @click="setSelectedcar(car.price)">
-          <b-img
-            :src="car.image"
-            width="500px"
-            height="350px"
-            class="rounded"
-          >
-          </b-img>
-          <p class="card-text">Year: {{ car.year }}</p>
-          <p class="card-text">origin: {{ car.origin }}</p>
-        </div> 
+            <b-img
+              :src="car.image"
+              width="500px"
+              height="350px"
+              class="rounded"
+            >
+            </b-img>
+            <p class="card-text">Year: {{ car.year }}</p>
+            <p class="card-text">origin: {{ car.origin }}</p>
+          </div>
           <a class="btn btn-primary" @click="goToEditPage(car.id)"
             ><span style="color: white">Edit</span></a
-          > &nbsp;
-          <a class="btn btn-primary" @click="goToDeletePage(car.id)"
+          >
+          &nbsp;
+          <a class="btn btn-primary" @click="goToDeletePage(car.name, car.id)"
             ><span style="color: white">Delete</span></a
-          > &nbsp;
+          >
+          &nbsp;
           <a class="btn btn-primary" @click="goToDetailsPage(car.id)"
             ><span style="color: white">Info</span></a
-          ></div>
+          >
+        </div>
       </div>
     </div>
     <galleryCard v-if="selectedcar != ''" :selectedcar="selectedcar" />
@@ -76,15 +80,19 @@ export default {
       this.$router.push("/cardetails/" + id);
     },
     goToAddCarPage: function () {
-      this.$router.push("/addcar/");      
+      this.$router.push("/addcar/");
     },
-    goToDeletePage: function(id) {
-      axios.delete("http://localhost:3000/carlist/" + id);
+
+    goToDeletePage: function (name, id) {
+      axios.delete("http://localhost:3000/carlist/" + id).catch(() => {
+        alert("Oops! Somthing went wrong");
+      });
+      alert("200: " + name + " Deleted successfully");
+
       this.$router.go();
     },
-    goToEditPage: function (id){
+    goToEditPage: function (id) {
       this.$router.push("/edit/" + id);
-      
     },
   },
 };
