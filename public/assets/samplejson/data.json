@@ -1,0 +1,90 @@
+{
+  "carlist": [
+    {
+      "id": 1,
+      "name": "Altroz",
+      "price": "6.7L",
+      "year": 2020,
+      "type": "Premium Hatchback",
+      "image": "assets/imgs/altroz.png",
+      "origin": "Made in India, Engine: upto 1497cc, Transmission: Auto Manual, Seating Capacity: 5, Mileage: 18/23 km/l combined"
+    },
+    {
+      "id": 2,
+      "name": "Punch",
+      "price": "5.4L",
+      "year": 2021,
+      "type": "Sub-Compact SUV",
+      "image": "assets/imgs/punch.png",
+      "origin": "India"
+    },
+    {
+      "name": "Mahindra XUV 700",
+      "year": "2021",
+      "image": "assets/imgs/mahindra.png",
+      "price": "18L",
+      "type": "Compact Crossover SUV",
+      "origin": "India",
+      "id": 3
+    },
+    {
+      "name": "Nexon ",
+      "year": "2021",
+      "image": "assets/imgs/nexon-ev.png",
+      "price": "10L",
+      "type": "Compact SUV",
+      "origin": "India",
+      "id": 4
+    },
+    {
+      "name": "Nexon ",
+      "year": "2017",
+      "image": "assets/imgs/nexon.png",
+      "price": "7.4L",
+      "type": "Subcompact Crossover SUV",
+      "origin": "India",
+      "id": 6
+    },
+    {
+      "name": "Tiago Flame Red",
+      "year": "2016",
+      "image": "assets/imgs/tata-tiago-flame-red.png",
+      "price": "5.22",
+      "type": "A-Segment Hatchback",
+      "origin": "India",
+      "id": 7
+    }
+  ],
+  "userlist": [
+    {
+      "email": "nilesh22s@gmail.com",
+      "pass": "admin@12345",
+      "utype": "Admin",
+      "gender": "Male",
+      "age": "21",
+      "dob": "2000-05-18",
+      "cpass": "admin@12345",
+      "id": 1
+    },
+    {
+      "email": "zenitsu@gmail.com",
+      "pass": "admin@123",
+      "utype": "Admin",
+      "gender": "Male",
+      "age": "21",
+      "dob": "2000-11-11",
+      "cpass": "admin@123",
+      "id": 2
+    },
+    {
+      "name": "Tanjiro",
+      "email": "tanjiro.dm@anime.com",
+      "password": "Adim@123",
+      "role": "admin",
+      "age": "22",
+      "dob": "2021-05-20",
+      "gender": "male",
+      "id": 3
+    }
+  ]
+}
